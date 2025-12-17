@@ -1,0 +1,54 @@
+//calculate and display the nett price of all customer
+for(int i=0; i<size; i++){
+  if(cus[i] instanceof Member){
+    Member mem = (Member) cus[i];
+    System.out.printf("\nNett price: RM %.2f", mem.calculatePayment());
+}
+}
+
+//iii- calculate and display the grand total price for all customer
+double grandTotal = 0;
+for(int i=0; i<size; i++){
+  if(cus[i] instancof Member){
+    Member mem = (Member)cus[i];
+    grandTotal += mem.calculatePayment();
+}
+else{
+    NonMember nmem = (NonMember)cus[i];
+    grandTotal += nmem.calculatePayment();
+}
+}
+System.out.printf("Grand Total: RM %.2f",grandTotal);
+
+//iv- determine and display the customer info with the highest payment
+double maxPayment = 0;
+int indMax = 0;
+
+for(int i=0; i<size; i++){
+  if(cus[i] instancof Member){
+    Member mem = (Member)cus[i];
+    if(mem.calculatePayment() > maxPayment){
+      maxPayment = mem.calculatePayment();
+      indMax = i;
+}
+else{
+  NonMember nmem = (NonMember)cus[i];
+  if(nmem.calculatePayment() > maxPayment){
+  maxPayment = nmem.calculatePayment();
+  indMax = i;
+}
+}
+}
+System.out.printf("%s \nMaximum Payment: RM %.2f",cus[indMax].toString(),maxPayment);
+
+//v-determine and display the total number of non member customer who have breakfast
+int count = 0;
+for(int i=0; i<size; i++){
+  if(cus[i] instanceof NonMember){
+    NonMember nmem = (NonMember)cus[i];
+    if(nmem.getSpa() && nmem.getBreakfast())
+      count++;
+}
+}
+System.out.println("The Number of Customer: " count);
+}
